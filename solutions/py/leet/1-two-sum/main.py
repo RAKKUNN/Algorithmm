@@ -21,12 +21,10 @@ def twoSum(nums: List[int], target: int) -> List[int]:
     return []
 
 if __name__ == "__main__":
-    import sys, json
+    import sys, json, re
     data = sys.stdin.read().strip()
-    if data:
-        # expect format: nums=[2,7,11,15], target=9
-        # simple parsing
-        ns, t = data.split("target=")
-        nums = eval(ns.split("nums=")[1].strip().rstrip(","))
-        target = int(t)
+    m = re.search(r"nums\s*=\s*(\[.*\])\s*,\s*target\s*=\s*(-?\d+)", data)
+    if m:
+        nums = eval(m.group(1))   # 문자열 → 리스트
+        target = int(m.group(2))
         print(twoSum(nums, target))

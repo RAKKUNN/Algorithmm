@@ -20,8 +20,8 @@ if [ ! -f "$cases_file" ]; then
 fi
 
 # Determine how to run the solution based on language
-if [ "$lang" = "python" ]; then
-    run_cmd="python $solution_dir/main.py"
+if [ "$lang" = "py" ]; then
+    run_cmd="python3 $solution_dir/main.py"
 elif [ "$lang" = "cpp" ]; then
     exe_file="/tmp/${platform}-${problem}.out"
     g++ -O2 -std=c++17 "$solution_dir/main.cpp" -o "$exe_file"
